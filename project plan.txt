@@ -1,0 +1,17 @@
+Steps need to accomplish:
+
+1. Displaying the options to the users
+2. Checking for the user choice is valid or not for options. Such as-
+        i. is the user enter any other number except 1 or 2
+       ii. is the user enter string rather than valid number
+3. Need to perform the next operation according to the user choice.
+   if the user choose-
+   Option 1:
+        i. Take x and y axis values and make sure the values are number
+       ii. making sure the set of x and y contain same number of elements
+      iii. plot title, labels are string or not
+       iv. line style and marker style are valid or not
+    Option 2:
+        i. Weather the file exist or not
+       ii. Weather the file follow all necessary checks as option 1
+4. Displaying the chart.
