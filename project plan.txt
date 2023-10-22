@@ -11,6 +11,7 @@ Steps need to accomplish:
        ii. making sure the set of x and y contain same number of elements
       iii. plot title, labels are string or not
        iv. line style and marker style are valid or not
+        v. checking the values are empty or not
     Option 2:
         i. Weather the file exist or not
        ii. Weather the file follow all necessary checks as option 1

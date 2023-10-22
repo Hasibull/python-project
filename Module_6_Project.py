@@ -49,20 +49,77 @@ def get_data(axis) -> list:
     return final_data
 
 
-def manual_chart():
+def yes_or_no(message) -> str:
+    choice = input(f"Would you like a {message}? [Y/N]: ").strip().lower()
+    while choice not in ["Y", "y"]:
+        print("Please type 'Y' for yes or 'N' for no!")
+        choice = input(f"Would you like a {message}? [Y/N]: ").strip().lower()
+    
+    return choice
+
+
+def get_name(message) -> str:
+    value = input(f"Please enter a {message}: ")
+    while len(value) <= 0:
+        print(f"{message} can't be empty!")
+        value = input(f"Please enter a {message}: ")
+    
+    return value
+
+
+def manual_chart() -> None:
+    """This function take input from user.
+    It check some data validation and display the chart
+    according to the user data."""
+    # Getting x and y axis values
     x_values = get_data("x")
     y_values = get_data("y")
     while len(y_values) != len(x_values):
         print("x-axis and y-axis should have same number of data elements!")
         y_values = get_data("y")
     
-    is_titled = input("Would you like a plot title? [Y/N]: ")
-    plot_title = input("Please enter a plot title: ")
-    is_x_label = input("Would you like an x-axis label? [Y/N]: ")
-    x_label = input("Please enter x-axis label: ")
-    is_y_label = input("Would you like an y-axis label? [Y/N]: ")
-    y_label = input("Please enter y-axis label: ")
+    # Getting title
+    is_titled = yes_or_no("plot title")
+    if is_titled == "y" or is_titled == "Y":
+        plot_title = get_name("plot title")
+    
+    # Getting x-axis label
+    is_x_label = yes_or_no("x-axis label")
+    if is_x_label == "y" or is_x_label == "Y":
+        x_label = get_name("x-axis label")
+    
+    # Getting y-axis label
+    is_y_label = yes_or_no("y-axis label")
+    if is_y_label == "y" or is_y_label == "Y":
+        y_label = get_name("y-axis label")
 
+    # Getting line style
+    is_line_style = yes_or_no("custom line style")
+    if is_line_style == "y" or is_line_style == "Y":
+        print("Available line styles are-")
+        print("1. Solid Line")
+        print("2. Dotted Line")
+        print("3. Dashed Line")
+        print("4. Dash-Dotted Line")
+        while True:
+            try:
+                style_option = int(input("Please choose a line style (1-4): "))
+            except ValueError:
+                print("Enter valid option!!")
+            else:
+                if style_option in [1, 2, 3, 4]:
+                    break
+                else:
+                    print("Choose value between 1 to 4")
+        if style_option == 1:
+            line_style = "-"
+        elif style_option == 2:
+            line_style = ":"
+        elif style_option == 3:
+            line_style = "--"
+        elif style_option == 4:
+            line_style = "-."
+            
 
 def file_chart():
     pass
